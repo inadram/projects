@@ -78,6 +78,7 @@ var ProgrammeGenerator = {
 	}
 };
 
+
 document.addEventListener('DOMContentLoaded', function () {
 	$(function() {
 		$( "#tabs" ).tabs();
