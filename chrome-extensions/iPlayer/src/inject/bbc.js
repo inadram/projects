@@ -36,8 +36,9 @@ var element = {
 var bbc = {
 	subscribe: function () {
 		element.createSubscribe();
-		element.updateSubscribeText('subscribe to this');
+		element.updateSubscribeText('subscribe');
 		this._attacheListener();
+		this._isSubscribed();
 	},
 
 	_attacheListener: function () {
@@ -45,8 +46,13 @@ var bbc = {
 	},
 
 	_onSubscribeClick: function () {
-		window.postMessage({ type: "iplayer", text: "subscribed" }, "*");
+		window.postMessage({ type: "iplayer", text: "subscribe" }, "*");
+	},
+
+	_isSubscribed: function(){
+		window.postMessage({ type: "iplayer", text: "isSubscribed" }, "*");
 	}
+
 };
 
 bbc.subscribe();

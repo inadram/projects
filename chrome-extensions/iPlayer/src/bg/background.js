@@ -1,11 +1,32 @@
+var brandId;
+var brandTitle;
+
+var lib = {
+	isSubscribe: function (value, object) {
+		var status=false;
+		for (var prop in object) {
+			if (object.hasOwnProperty(prop)) {
+				if (object[ prop ] === value)
+					status= true;
+			}
+		}
+		return status;
+	}
+};
+
 var background = {
-	_isValidUrl: function (tabId, changeInfo, tab) {
-		return  (tab.url.indexOf('http://www.bbc.co.uk/iplayer/') > -1);
+
+	_isValid: function(url){
+		return background._isValidUrl(url)
+	},
+
+	_isValidUrl: function (url) {
+		return  (url.indexOf('http://www.bbc.co.uk/iplayer/episode') > -1);
 	},
 
 
 	requestFeed: function (tabId, changeInfo, tab) {
-		if (background._isValidUrl(tabId, changeInfo, tab)) {
+		if (background._isValid(tab.url)) {
 			var url = background._getIONFeedUrl(tab);
 			background._loadProgrammeFeed(url);
 		}
@@ -25,12 +46,8 @@ var background = {
 	},
 
 	_setBrandDetails: function (xml) {
-		background._brandId = background._getElementText(xml, 'brand_id', 'series_id');
-		background._brandTitle = background._getElementText(xml, 'brand_title', 'series_title');
-	},
-
-	getBrandDetails: function () {
-		return {id: background._brandId, title: background._brandTitle};
+		brandId = background._getElementText(xml, 'brand_id', 'series_id');
+		brandTitle = background._getElementText(xml, 'brand_title', 'series_title');
 	},
 
 	_getElementText: function (XML, id, backupId) {
@@ -46,12 +63,19 @@ subscribe = {
 	},
 
 	_isValid: function (request) {
-		return  request.message == "subscribeToCurrentProgramme";
+		return  this._isValidRequest(request) || this._isAlreadySubscribed(request);
+	},
+
+	_isAlreadySubscribed: function (request) {
+		return request.message == "isSubscribedToCurrentProgramme" && lib.isSubscribe(brandTitle, localStorage);
+	},
+
+	_isValidRequest: function (request) {
+		return request.message == "subscribeToCurrentProgramme";
 	},
 
 	_onSuccess: function (sendResponse) {
-		var brandDetails = background.getBrandDetails();
-		localStorage.setItem(brandDetails.id, brandDetails.title);
+		localStorage.setItem(brandId, brandTitle);
 		sendResponse({status: "success"});
 	},
 

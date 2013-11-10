@@ -21,7 +21,8 @@ var subscription = {
 
 	handleSubscribe: function (event) {
 		if (subscription._isValid(event)) {
-			subscription._subscribe();
+			subscription._subscribe(event);
+			subscription._isSubscribed(event);
 		}
 	},
 
@@ -29,12 +30,23 @@ var subscription = {
 		return (event.data.type && (event.data.type == "iplayer") && event.source == window);
 	},
 
-	_subscribe: function () {
-		chrome.runtime.sendMessage({message: "subscribeToCurrentProgramme"}, this._response);
+	_subscribe: function (event) {
+		if (event.data.text == 'subscribe') {
+			chrome.runtime.sendMessage({message: "subscribeToCurrentProgramme"}, this._response);
+		}
+	},
+
+	_isSubscribed: function (event) {
+		if (event.data.text == 'isSubscribed') {
+			chrome.runtime.sendMessage({message: "isSubscribedToCurrentProgramme"}, this._response);
+		}
 	},
 
 	_response: function (evt) {
-		document.getElementById('subscribeLi').setAttribute('class', 'subscribed');
+		if (evt.status == 'success') {
+			document.getElementById('subscribeLi').setAttribute('class', 'subscribed');
+			document.getElementById('subscribeText').textContent = 'subscribed';
+		}
 	}
 };
 
@@ -61,7 +73,7 @@ var inject = {
 		return (document.readyState === "complete");
 	}
 };
-
+debugger;
 var readyStateCheckInterval = setInterval(inject.dom, 10);
 
 
