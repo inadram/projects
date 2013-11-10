@@ -1,0 +1,9 @@
+#programme-info .utilities ul.tools li.subscribe .icon {
+    background-position: 0 -1px;
+    padding-left: 21px;
+}
+
+#programme-info .utilities ul.tools li.subscribed .icon {
+    background-position: -150px -1px;
+    padding-left: 21px;
+}

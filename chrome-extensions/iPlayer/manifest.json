@@ -1,26 +1,54 @@
 {
+	"name": "BBC iPlayer subscription manager",
+	"version": "0.0.1",
 	"manifest_version": 2,
-
-	"name": "BBC iPlayer ",
 	"description": "This extension help you to subscribe to the BBC programmes",
-	"version": "1.0",
-	"background": {
-		"scripts": ["background.js"]
+	"homepage_url": "http://blog.inadram.com",
+	"icons": {
+		"16": "icons/icon16.png",
+		"48": "icons/icon48.png",
+		"128": "icons/icon128.png"
 	},
-
+	"default_locale": "en",
+	"background": {
+		"page": "src/bg/background.html",
+		"persistent": true
+	},
+	"options_page": "src/options_custom/index.html",
 	"browser_action": {
-		"default_icon": "icon.jpg",
-		"default_popup": "popup.html"
+		"default_icon": "icons/icon19.png",
+		"default_title": "iPlayer subscription",
+		"default_popup": "src/browser_action/browser_action.html"
+	},
+	"permissions": [
+		"bookmarks",
+		"chrome://favicon/",
+		"clipboardRead",
+		"clipboardWrite",
+		"contentSettings",
+		"contextMenus",
+		"cookies",
+		"fileBrowserHandler",
+		"tts",
+		"ttsEngine",
+		"history",
+		"storage",
+		"idle",
+		"management",
+		"notifications",
+		"tabs",
+		"geolocation",
+		"http://bbc.co.uk/*",
+		"http://*.bbc.co.uk/*"
+	],
+	"omnibox": {
+		"keyword": "iPlayer"
 	},
 	"content_scripts": [
 		{
 			"matches": ["http://www.bbc.co.uk/iplayer/episode/*"],
-			"js": ["content_script.js"]
+			"js": ["src/inject/inject.js"]
 		}
 	],
-	"web_accessible_resources": ["script.js"],
-
-	"permissions": [
-		"tabs", "storage", "http://*.bbc.co.uk/*"
-	]
+	"web_accessible_resources": ["src/inject/bbc.js", "src/inject/bbc.css"]
 }
