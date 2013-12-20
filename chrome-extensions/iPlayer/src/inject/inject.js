@@ -73,8 +73,7 @@ var inject = {
 		return (document.readyState === "complete");
 	}
 };
-debugger;
-var readyStateCheckInterval = setInterval(inject.dom, 10);
+var readyStateCheckInterval = setInterval(inject.dom, 1000);
 
 
 

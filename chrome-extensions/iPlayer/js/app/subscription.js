@@ -5,7 +5,6 @@ define('app/subscription',
 	function (Class) {
 		return Class.extend({
 
-
 			subscribeToCurrentProgramme: function () {
 				localStorage.setItem("iplayer_" + localStorage.getItem('currentBrandTitle').replace(/\W/g, ''), localStorage.getItem('currentBrandId'));
 			}

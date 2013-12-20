@@ -31,6 +31,7 @@ define('lib/element',
 				a.appendChild(linkText);
 				a.title = text;
 				a.href = url;
+				a.target='_blank';
 				return a;
 			}
 

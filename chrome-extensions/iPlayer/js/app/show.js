@@ -17,7 +17,8 @@ define('app/show',
 			_getBrands: function () {
 				var brands = [];
 				for (var brandId in localStorage) {
-						brands.push({id:brandId , title: localStorage.getItem(brandId)});
+					var brandDetail = JSON.parse(localStorage.getItem(brandId));
+					brands.push({id: brandId, detail: {title:brandDetail.title,episodes:brandDetail.episodes}});
 				}
 				return brands;
 			},
@@ -31,7 +32,7 @@ define('app/show',
 
 			_createTabHeader: function (brand) {
 				var tabsHeader = document.getElementById('tabsHeader');
-				var li = this._element.createLi('tabHeader_' + brand.id, brand.title);
+				var li = this._element.createLi('tabHeader_' + brand.id, brand.detail.title);
 				tabsHeader.appendChild(li);
 			},
 
@@ -40,7 +41,7 @@ define('app/show',
 				var req = new XMLHttpRequest();
 				req.open("GET", iPlayerFeed, false);
 				req.setRequestHeader('Accept', 'application/xml');
-				req.send(null);
+				req.send();
 				var episodes = req.responseXML.querySelectorAll('episode');
 				var episodesDetails = [];
 				for (var i = 0; i < episodes.length; i++) {
@@ -49,12 +50,14 @@ define('app/show',
 					var title = episodes[i].querySelector('contextually_unique_title').textContent;
 					episodesDetails.push({id: id, title: title, url: url});
 				}
+				localStorage.removeItem(brand.id);
+				localStorage.setItem(brand.id, JSON.stringify({title: brand.detail.title, episodeDetails: episodesDetails}));
 				return episodesDetails;
 			},
 
 			_createTabContent: function (brand) {
 				var tabContainer = document.getElementById('tabscontent');
-				var episodes = this._getEpisodes(brand);
+				var episodes = brand.detail.episodes;
 				var content = this._createContent(brand.id, episodes);
 				tabContainer.appendChild(content);
 			},
