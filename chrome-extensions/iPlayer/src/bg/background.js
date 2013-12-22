@@ -136,7 +136,7 @@ update = {
 	},
 
 	_isUpdated: function (brandDetail, episodes) {
-		return JSON.stringify(brandDetail.episodes) === JSON.stringify(episodes);
+		return JSON.stringify(brandDetail.episodes) !== JSON.stringify(episodes);
 	}
 };
 
@@ -144,4 +144,4 @@ chrome.tabs.onUpdated.addListener(background.requestFeed);
 
 chrome.runtime.onMessage.addListener(subscribe.handleSubscribe);
 
-setInterval(update.episodes, 5000);
+setInterval(update.episodes, 3600);
