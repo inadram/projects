@@ -424,7 +424,7 @@
                 if (typeOf(option) == "array") {
                     option = {
                         "value": option[0],
-                        "text": option[1] || option[0],
+                        "text": option[1] || option[0]
                     };
                 }
                 return option;

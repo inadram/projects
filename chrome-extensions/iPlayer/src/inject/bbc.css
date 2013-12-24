@@ -7,3 +7,7 @@
     background-position: -150px -1px;
     padding-left: 21px;
 }
+
+.display-none{
+    display: none !important;
+}

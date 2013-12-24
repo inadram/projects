@@ -32,18 +32,29 @@ var subscription = {
 
 	_subscribe: function (event) {
 		if (event.data.text == 'subscribe') {
-			chrome.runtime.sendMessage({message: "subscribeToCurrentProgramme"}, this._response);
+			chrome.runtime.sendMessage({message: "subscribe"}, this._response);
 		}
 	},
 
 	_isSubscribed: function (event) {
 		if (event.data.text == 'isSubscribed') {
-			chrome.runtime.sendMessage({message: "isSubscribedToCurrentProgramme"}, this._response);
+			chrome.runtime.sendMessage({message: "isSubscribed"}, this._response);
 		}
 	},
 
 	_response: function (evt) {
-		if (evt.status == 'success') {
+		subscription._handleInvalidRequest(evt);
+		subscription._handleAlreadySubscribedRequest(evt);
+	},
+
+	_handleInvalidRequest: function (evt) {
+		if (evt.status !== 'invalidRequest') {
+			document.getElementById('subscribeLi').classList.remove('display-none');
+		}
+	},
+
+	_handleAlreadySubscribedRequest: function (evt) {
+		if (evt.status == 'subscribed') {
 			document.getElementById('subscribeLi').setAttribute('class', 'subscribed');
 			document.getElementById('subscribeText').textContent = 'subscribed';
 		}

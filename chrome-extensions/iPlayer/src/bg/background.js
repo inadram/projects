@@ -7,7 +7,7 @@ var lib = {
 		var status = false;
 		for (var prop in object) {
 			if (object.hasOwnProperty(prop)) {
-				if (JSON.parse(object[ prop ]).title === value)
+				if (JSON.parse(object[prop ]).title === value)
 					status = true;
 			}
 		}
@@ -74,62 +74,72 @@ var background = {
 subscribe = {
 
 	handleSubscribe: function (request, sender, sendResponse) {
-		(subscribe._isValid(request)) ? subscribe._onSuccess(sendResponse) : subscribe._onFailure(sendResponse);
+		var status = 'invalidRequest';
+		if(subscribe._isValidRequest()){
+			status = 'validRequest';
+			status = subscribe._handleSubscribeRequest(request, status);
+			status = subscribe._handleAlreadySubscribedRequest(request, status);
+		}
+		sendResponse({status: status});
 	},
 
-	_isValid: function (request) {
-		return  this._isValidRequest(request) || this._isAlreadySubscribed(request);
+	_handleAlreadySubscribedRequest: function (request, status) {
+		if (request.message === 'isSubscribed' && this._isAlreadySubscribed()) {
+			status = 'subscribed';
+		}
+		return status;
 	},
 
-	_isAlreadySubscribed: function (request) {
-		return request.message == "isSubscribedToCurrentProgramme" && lib.isSubscribed(brandTitle, localStorage);
+	_handleSubscribeRequest: function (request, status) {
+		if (request.message === 'subscribe') {
+			localStorage.setItem(brandId, JSON.stringify({title: brandTitle, episodes: episodesDetails}));
+			status = 'subscribed';
+		}
+		return status;
 	},
 
-	_isValidRequest: function (request) {
-		return request.message == "subscribeToCurrentProgramme";
+	_isAlreadySubscribed: function () {
+		return lib.isSubscribed(brandTitle, localStorage);
 	},
 
-	_onSuccess: function (sendResponse) {
-		localStorage.setItem(brandId, JSON.stringify({title:brandTitle,episodes:episodesDetails}));
-		sendResponse({status: "success"});
-	},
-
-	_onFailure: function (sendResponse) {
-		sendResponse({status: "unSuccess"});
+	_isValidRequest: function () {
+		return brandId !== '' && brandTitle !== '';
 	}
 };
 
 notification = {
-	show: function(brandTitle,episodes) {
-		var status = notification.create(brandTitle,episodes);
-		status.onclick = notification.click.bind(status,episodes);
+	show: function (brandTitle, episodes) {
+		var status = notification.create(brandTitle, episodes);
+		status.onclick = notification.click.bind(status, episodes);
 		status.show();
 	},
-	click: function(episodes){
+	click: function (episodes) {
 		window.open(episodes[0].url);
 		this.close();
 	},
-	create:function(brandTitle,episodes){
-		return window.webkitNotifications.createNotification('http://www.bbc.co.uk/iplayer/images/episode/'+episodes[0].id+'_196_110.jpg',brandTitle,episodes[0].title);
+	create: function (brandTitle, episodes) {
+		return window.webkitNotifications.createNotification('http://www.bbc.co.uk/iplayer/images/episode/' + episodes[0].id + '_196_110.jpg', brandTitle, episodes[0].title);
 	}
 };
 
 update = {
 
-	episodes: function(){
+	episodes: function () {
 		for (var brandId in localStorage) {
-			var brandDetail = JSON.parse(localStorage.getItem(brandId));
-			var episodes = background._getEpisodes(brandId);
-			if(update._isUpdated(brandDetail, episodes)) {
-				localStorage.removeItem(brandId);
-				localStorage.setItem(brandId, JSON.stringify({title:brandDetail.title,episodes:episodes}));
-				notification.show(brandDetail.title,episodes);
+			if (brandId.search(/store.settings/) < 0) {
+				var brandDetail = JSON.parse(localStorage.getItem(brandId));
+				var episodes = background._getEpisodes(brandId);
+				if (update._isUpdated(brandDetail, episodes)) {
+					localStorage.removeItem(brandId);
+					localStorage.setItem(brandId, JSON.stringify({title: brandDetail.title, episodes: episodes}));
+					notification.show(brandDetail.title, episodes);
 
-				chrome.browserAction.getBadgeText({},function(number) {
-					var numberOfUpdatedProgrammes= parseInt(number)|| 0;
-					chrome.browserAction.setBadgeText({text: String(numberOfUpdatedProgrammes+1) });
-				});
+					chrome.browserAction.getBadgeText({}, function (number) {
+						var numberOfUpdatedProgrammes = parseInt(number) || 0;
+						chrome.browserAction.setBadgeText({text: String(numberOfUpdatedProgrammes + 1) });
+					});
 
+				}
 			}
 
 		}
@@ -144,4 +154,5 @@ chrome.tabs.onUpdated.addListener(background.requestFeed);
 
 chrome.runtime.onMessage.addListener(subscribe.handleSubscribe);
 
-setInterval(update.episodes, 3600);
+var checkUpdateInterval = localStorage.getItem('store.settings.iplayer_check_update') || 1;
+setInterval(update.episodes, checkUpdateInterval*3600*1000);

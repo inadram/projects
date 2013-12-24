@@ -14,6 +14,7 @@ var element = {
 	_createSubscribeLi: function (className, id) {
 		var li = document.getElementsByClassName("link-to-this")[0].cloneNode(true);
 		li.setAttribute('class', className);
+		li.setAttribute('class', 'display-none');
 		li.setAttribute('id', id);
 		return li;
 	},

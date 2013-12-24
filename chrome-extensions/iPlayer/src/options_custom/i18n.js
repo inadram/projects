@@ -1,5 +1,8 @@
 // SAMPLE
 this.i18n = {
+	"subscription": {
+		"en": "Subscription"
+	},
     "settings": {
         "en": "Settings",
         "de": "Optionen"

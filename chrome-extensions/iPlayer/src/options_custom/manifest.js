@@ -78,25 +78,25 @@ this.manifest = {
             "label": "Soup 1 should be:",
             "options": {
                 "groups": [
-                    "Hot", "Cold",
+                    "Hot", "Cold"
                 ],
                 "values": [
                     {
                         "value": "hot",
                         "text": "Very hot",
-                        "group": "Hot",
+                        "group": "Hot"
                     },
                     {
                         "value": "Medium",
-                        "group": 1,
+                        "group": 1
                     },
                     {
                         "value": "Cold",
-                        "group": 2,
+                        "group": 2
                     },
                     ["Non-existing"]
-                ],
-            },
+                ]
+            }
         },
         {
             "tab": "Details",
@@ -119,7 +119,22 @@ this.manifest = {
                 ["hot", "Hot and yummy"],
                 ["cold"]
             ]
-        }
+        },
+		{
+			"tab": "subscription",
+			"group": 'Check update',
+			"name": "iplayer_check_update",
+			"type": "slider",
+			"label": "check iPlayer for new episodes every:",
+			"max": 24,
+			"min": 1,
+			"step": 1,
+			"display": true,
+			"displayModifier": function (value) {
+				var suffix = (value ==1)?' hour':' hours';
+				return value + suffix;
+			}
+		}
     ],
     "alignment": [
         [
