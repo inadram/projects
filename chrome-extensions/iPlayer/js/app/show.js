@@ -12,6 +12,12 @@ define('app/show',
 				this._element = new Element();
 				var brands = this._getBrands();
 				this._createTabs(brands);
+				var tabContainer = document.getElementById('tabContainer');
+				var settingDiv = this._element.createDiv('setting');
+				var setting = this._element.createA('setting',chrome.extension.getURL("options.html"));
+				settingDiv.appendChild(setting);
+				tabContainer.appendChild(settingDiv);
+
 				chrome.browserAction.setBadgeText({text: '' });
 			},
 

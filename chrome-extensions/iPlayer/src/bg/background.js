@@ -147,6 +147,7 @@ update = {
 
 	_isUpdated: function (brandDetail, episodes) {
 		return JSON.stringify(brandDetail.episodes) !== JSON.stringify(episodes);
+//		return JSON.stringify(brandDetail.episodes) === JSON.stringify(episodes);
 	}
 };
 
@@ -156,3 +157,4 @@ chrome.runtime.onMessage.addListener(subscribe.handleSubscribe);
 
 var checkUpdateInterval = localStorage.getItem('store.settings.iplayer_check_update') || 1;
 setInterval(update.episodes, checkUpdateInterval*3600*1000);
+//setInterval(update.episodes, checkUpdateInterval*1000);

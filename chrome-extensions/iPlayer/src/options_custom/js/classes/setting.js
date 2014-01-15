@@ -588,93 +588,111 @@
         }
     });
 
-    Bundle.RadioButtons = new Class({
-        // label, options[{value, text}]
-        // action -> change
-        "Extends": Bundle,
-        
-        "createDOM": function () {
-            var settingID = String.uniqueID();
-            
-            this.bundle = new Element("div", {
-                "class": "setting bundle radio-buttons"
-            });
-            
-            this.label = new Element("label", {
-                "class": "setting label radio-buttons"
-            });
-            
-            this.containers = [];
-            this.elements = [];
-            this.labels = [];
-            
-            if (this.params.options === undefined) { return; }
-            this.params.options.each((function (option) {
-                var optionID,
-                    container;
-                
-                this.params.searchString += (option.text || option.value) + "•";
-                
-                optionID = String.uniqueID();
-                container = (new Element("div", {
-                    "class": "setting container radio-buttons"
-                })).inject(this.bundle);
-                this.containers.push(container);
-                
-                this.elements.push((new Element("input", {
-                    "id": optionID,
-                    "name": settingID,
-                    "class": "setting element radio-buttons",
-                    "type": "radio",
-                    "value": option.value
-                })).inject(container));
-                
-                this.labels.push((new Element("label", {
-                    "class": "setting element-label radio-buttons",
-                    "for": optionID,
-                    "text": option.text || option.value
-                })).inject(container));
-            }).bind(this));
-        },
-        
-        "setupDOM": function () {
-            if (this.params.label !== undefined) {
-                this.label.set("html", this.params.label);
-                this.label.inject(this.bundle, "top");
-                this.params.searchString += this.params.label + "•";
-            }
-        },
-        
-        "addEvents": function () {
-            this.bundle.addEvent("change", (function (event) {
-                if (this.params.name !== undefined) {
-                    settings.set(this.params.name, this.get());
-                }
-                
-                this.fireEvent("action", this.get());
-            }).bind(this));
-        },
-        
-        "get": function () {
-            var checkedEl = this.elements.filter((function (el) {
-                return el.get("checked");
-            }).bind(this));
-            return (checkedEl[0] && checkedEl[0].get("value"));
-        },
-        
-        "set": function (value, noChangeEvent) {
-            var desiredEl = this.elements.filter((function (el) {
-                return (el.get("value") === value);
-            }).bind(this));
-            desiredEl[0] && desiredEl[0].set("checked", true);
-            
-            if (noChangeEvent !== true) {
-                this.bundle.fireEvent("change");
-            }
-            
-            return this;
-        }
-    });
+    Bundle.RadioButtons =  new Class({
+		// label
+		// action -> change
+		"Extends": Bundle,
+
+		"createDOM": function () {
+			this.bundle = new Element("div", {
+				"class": "setting bundle checkbox"
+			});
+
+			this.container = new Element("div", {
+				"class": "setting container checkbox"
+			});
+
+			this.element = new Element("input", {
+				"id": String.uniqueID(),
+				"class": "setting element checkbox",
+				"type": "checkbox",
+				"value": "true"
+			});
+
+			this.label = new Element("label", {
+				"class": "setting label checkbox",
+				"for": this.element.get("id")
+			});
+		},
+
+		"setupDOM": function () {
+			this.element.inject(this.container);
+			this.container.inject(this.bundle);
+
+			if (this.params.label !== undefined) {
+				this.label.set("html", this.params.label);
+				this.label.inject(this.container);
+				this.params.searchString += this.params.label + "•";
+			}
+		},
+
+		"get": function () {
+			return this.element.get("checked");
+		},
+
+		"set": function (value, noChangeEvent) {
+			this.element.set("checked", value);
+
+			if (noChangeEvent !== true) {
+				this.element.fireEvent("change");
+			}
+
+			return this;
+		}
+	});
+
+	Bundle.Subscriptions = new Class({
+		// label
+		// action -> change
+		"Extends": Bundle,
+
+		"createDOM": function () {
+			this.bundle = new Element("div", {
+				"class": "setting bundle checkbox"
+			});
+
+			this.container = new Element("div", {
+				"class": "setting container checkbox"
+			});
+
+			this.element = new Element("input", {
+				"id": String.uniqueID(),
+				"class": "setting element checkbox",
+				"type": "checkbox",
+				"value": "true"
+			});
+
+			this.label = new Element("label", {
+				"class": "setting label checkbox",
+				"for": this.element.get("id")
+			});
+		},
+
+		"setupDOM": function () {
+			this.element.inject(this.container);
+			this.container.inject(this.bundle);
+
+			if (this.params.label !== undefined) {
+				this.label.set("html", this.params.label);
+				this.label.inject(this.container);
+				this.params.searchString += this.params.label + "•";
+			}
+		},
+
+		"get": function () {
+			return this.element.get("checked");
+		},
+
+		"set": function (value, noChangeEvent) {
+			this.element.set("checked", value);
+
+			if (noChangeEvent !== true) {
+				this.element.fireEvent("change");
+			}
+
+			return this;
+		}
+	});
     
     this.Setting = new Class({
         "initialize": function (container) {
@@ -695,7 +713,8 @@
                 "slider": "Slider",
                 "popupButton": "PopupButton",
                 "listBox": "ListBox",
-                "radioButtons": "RadioButtons"
+                "radioButtons": "RadioButtons",
+				"subscriptions": "Subscriptions"
             };
             
             if (types.hasOwnProperty(params.type)) {
