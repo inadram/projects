@@ -17,14 +17,6 @@ this.manifest = {
 				var suffix = (value == 1) ? ' hour' : ' hours';
 				return value + suffix;
 			}
-		},
-		{
-			"tab": "Popular programmes",
-			"group": 'subscribe now',
-			"name": "popular programmes",
-			"type": "button",
-			"label": "comming soon !" ,
-			"text" : "subscribe"
 		}
 	]
 };

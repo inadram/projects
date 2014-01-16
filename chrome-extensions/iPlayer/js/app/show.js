@@ -8,17 +8,31 @@ define('app/show',
 
 		return Class.extend({
 
+
+
+
 			init: function () {
 				this._element = new Element();
+				this._tabContainer = document.getElementById('tabContainer');
 				var brands = this._getBrands();
-				this._createTabs(brands);
-				var tabContainer = document.getElementById('tabContainer');
-				var settingDiv = this._element.createDiv('setting');
-				var setting = this._element.createA('setting',chrome.extension.getURL("options.html"));
-				settingDiv.appendChild(setting);
-				tabContainer.appendChild(settingDiv);
-
+				(brands.length > 0)? this._createTabs(brands) : this._createUpsell();
+				this._createDivLinks();
 				chrome.browserAction.setBadgeText({text: '' });
+			},
+
+			_createUpsell: function () {
+				var upsellDiv =this._element.createDiv('upsell', 'upsell');
+				var upsellLink = this._element.createA('find your favourite programme on iplayer and click on subscribe button which is under player menu!', 'http://www.bbc.co.uk/iplayer/');
+				upsellDiv.appendChild(upsellLink);
+				this._tabContainer.appendChild(upsellDiv);
+
+			},
+
+			_createDivLinks: function () {
+				var settingDiv = this._element.createDivLink('settings', chrome.extension.getURL("/src/options_custom/index.html"));
+				var popularDiv = this._element.createDivLink('popular', 'http://www.bbc.co.uk/iplayer/tv/mostpopular');
+				this._tabContainer.appendChild(settingDiv);
+				this._tabContainer.appendChild(popularDiv);
 			},
 
 			_getBrands: function () {

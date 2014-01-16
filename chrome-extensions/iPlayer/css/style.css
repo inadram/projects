@@ -105,5 +105,41 @@ td {
 .odd {
     background-color: white;
 }
+.settings{
+    background-color: #ffffff;
+    position: absolute;
+    border-radius:5px;
+    top: 15px;
+    left:645px;
+    padding: 4px 4px 4px 20px;
+    background-image:url('../img/settings.png');
+    background-repeat: no-repeat;
+    background-position-y:4px;
+    background-position-x:2px;
+}
+
+.popular{
+    background-color: #ffffff;
+    position: absolute;
+    border-radius:5px;
+    top: 15px;
+    left:575px;
+    padding: 4px 4px 4px 20px;
+    background-image:url('../img/popular.png');
+    background-repeat: no-repeat;
+    background-position-y:4px;
+    background-position-x:2px;
+}
+
+.upsell{
+    position: absolute;
+    top: 50px;
+    left:50px;
+    padding: 4px 4px 4px 85px;
+    background-image:url('../img/subscribe.png');
+    background-repeat: no-repeat;
+    background-position-y:4px;
+    background-position-x:2px;
+}
 
 

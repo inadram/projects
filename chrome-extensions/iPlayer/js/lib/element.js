@@ -60,6 +60,13 @@ define('lib/element',
 					td.setAttribute('width',width);
 				}
 				return td;
+			},
+
+			createDivLink: function (elementName, Url) {
+				var div = this.createDiv(elementName, elementName);
+				var link = this.createA(elementName, Url);
+				div.appendChild(link);
+				return div;
 			}
 
 		});
