@@ -2,16 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3da001cc-e055-489b-b198-4cca924e0ed7" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/iPlayer/popup.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/iPlayer/background.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/iPlayer/js/app/subscription.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/iPlayer/src/inject/bbc.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/iPlayer/content_script.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/iPlayer/js/app/show.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/iPlayer/icons/icon.jpg" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/iPlayer/js/lib/require.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/iPlayer/iPlayer.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/iPlayer/icons/icon.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/iPlayer/src/inject/bbc.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/iPlayer/background.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/iPlayer/content_script.js" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/iPlayer/manifest.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/iPlayer/js/app/subscription.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/iPlayer/iPlayer.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/iPlayer/popup.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/iPlayer/js/app/show.js" />
     </list>
     <ignored path="chrome-extensions.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -47,7 +47,7 @@
     <file path="$PROJECT_DIR$/../../../../iPlayer/iplayerfortv-static/trunk/webapp/static-versioned/script/appui/framesets/favouritesframeset.js" changelist="3da001cc-e055-489b-b198-4cca924e0ed7" time="1383670078288" ignored="false" />
     <file path="/favouritesframeset.js" changelist="3da001cc-e055-489b-b198-4cca924e0ed7" time="1383670077889" ignored="false" />
     <file path="/*.txt" changelist="3da001cc-e055-489b-b198-4cca924e0ed7" time="1383670405168" ignored="false" />
-    <file path="/a.dummy" changelist="3da001cc-e055-489b-b198-4cca924e0ed7" time="1389778988849" ignored="false" />
+    <file path="/a.dummy" changelist="3da001cc-e055-489b-b198-4cca924e0ed7" time="1390032626922" ignored="false" />
     <file path="/browser_action.html" changelist="3da001cc-e055-489b-b198-4cca924e0ed7" time="1384034162882" ignored="false" />
     <file path="/app.js" changelist="3da001cc-e055-489b-b198-4cca924e0ed7" time="1384034328958" ignored="false" />
     <file path="/main.js" changelist="3da001cc-e055-489b-b198-4cca924e0ed7" time="1383921851471" ignored="false" />
@@ -57,13 +57,13 @@
     <file path="/style.css" changelist="3da001cc-e055-489b-b198-4cca924e0ed7" time="1389863441166" ignored="false" />
     <file path="/show.js" changelist="3da001cc-e055-489b-b198-4cca924e0ed7" time="1389863094552" ignored="false" />
     <file path="/element.js" changelist="3da001cc-e055-489b-b198-4cca924e0ed7" time="1389861096336" ignored="false" />
-    <file path="/background.js" changelist="3da001cc-e055-489b-b198-4cca924e0ed7" time="1387853211726" ignored="false" />
+    <file path="/background.js" changelist="3da001cc-e055-489b-b198-4cca924e0ed7" time="1389969768372" ignored="false" />
     <file path="/background.html" changelist="3da001cc-e055-489b-b198-4cca924e0ed7" time="1384033865695" ignored="false" />
     <file path="/script.js" changelist="3da001cc-e055-489b-b198-4cca924e0ed7" time="1384093696790" ignored="false" />
     <file path="/inject.js" changelist="3da001cc-e055-489b-b198-4cca924e0ed7" time="1387845617701" ignored="false" />
     <file path="/manifest.json" changelist="3da001cc-e055-489b-b198-4cca924e0ed7" time="1384094431249" ignored="false" />
     <file path="/inject.css" changelist="3da001cc-e055-489b-b198-4cca924e0ed7" time="1384097929860" ignored="false" />
-    <file path="/bbc.js" changelist="3da001cc-e055-489b-b198-4cca924e0ed7" time="1387840581032" ignored="false" />
+    <file path="/bbc.js" changelist="3da001cc-e055-489b-b198-4cca924e0ed7" time="1389959302626" ignored="false" />
     <file path="/i18n.js" changelist="3da001cc-e055-489b-b198-4cca924e0ed7" time="1387827176065" ignored="false" />
     <file path="/manifest.js" changelist="3da001cc-e055-489b-b198-4cca924e0ed7" time="1389779255685" ignored="false" />
     <file path="/main.css" changelist="3da001cc-e055-489b-b198-4cca924e0ed7" time="1387839850440" ignored="false" />
@@ -71,8 +71,8 @@
     <file path="/store.js" changelist="3da001cc-e055-489b-b198-4cca924e0ed7" time="1387851670991" ignored="false" />
     <file path="/setting.js" changelist="3da001cc-e055-489b-b198-4cca924e0ed7" time="1389597933355" ignored="false" />
     <file path="/settings.js" changelist="3da001cc-e055-489b-b198-4cca924e0ed7" time="1389778544127" ignored="false" />
-    <file path="/backgroundtest.js" changelist="3da001cc-e055-489b-b198-4cca924e0ed7" time="1389952901321" ignored="false" />
-    <file path="/jsTestDriver.conf" changelist="3da001cc-e055-489b-b198-4cca924e0ed7" time="1389949636400" ignored="false" />
+    <file path="/backgroundtest.js" changelist="3da001cc-e055-489b-b198-4cca924e0ed7" time="1389966106521" ignored="false" />
+    <file path="/jsTestDriver.conf" changelist="3da001cc-e055-489b-b198-4cca924e0ed7" time="1389958953082" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,6 +87,7 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -123,7 +124,6 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -133,109 +133,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="settings.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/iPlayer/src/options_custom/settings.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="55" selection-start="775" selection-end="775" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="manifest.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/iPlayer/src/options_custom/manifest.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="9" selection-start="445" selection-end="445" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="show.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/iPlayer/js/app/show.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="85" selection-start="429" selection-end="429" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="style.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/iPlayer/css/style.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="144" column="72" selection-start="2955" selection-end="2955" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="background.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/iPlayer/src/bg/background.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="148" column="52" selection-start="4555" selection-end="4555" vertical-scroll-proportion="-21.538462">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sinon.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/iPlayer/sinon.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2524" column="10" selection-start="63057" selection-end="63057" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="backgroundtest.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="backgroundtest.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/iPlayer/src-test/bg/backgroundtest.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="43" selection-start="257" selection-end="257" vertical-scroll-proportion="0.17564403">
+            <state line="32" column="96" selection-start="1365" selection-end="1365" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="jsTestDriver.conf" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/iPlayer/jsTestDriver.conf">
+      <file leaf-file-name="background.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/iPlayer/src/bg/background.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="46" selection-start="105" selection-end="105" vertical-scroll-proportion="0.0">
+            <state line="72" column="2" selection-start="2243" selection-end="2243" vertical-scroll-proportion="1.3035495">
               <folding />
             </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="bbc.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/iPlayer/src/inject/bbc.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="52" column="10" selection-start="1350" selection-end="1351" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="inject.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/iPlayer/src/inject/inject.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="element.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/iPlayer/js/lib/element.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="62" column="45" selection-start="1411" selection-end="1411" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="settings.png" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/iPlayer/img/settings.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
           </provider>
         </entry>
       </file>
@@ -258,21 +170,21 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/iPlayer/src/options_custom/i18n.js" />
-        <option value="$PROJECT_DIR$/iPlayer/src/inject/bbc.js" />
         <option value="$PROJECT_DIR$/iPlayer/src/options_custom/css/main.css" />
         <option value="$PROJECT_DIR$/iPlayer/src/inject/bbc.css" />
         <option value="$PROJECT_DIR$/iPlayer/src/inject/inject.js" />
         <option value="$PROJECT_DIR$/iPlayer/src/options_custom/lib/store.js" />
         <option value="$PROJECT_DIR$/iPlayer/src/options_custom/js/classes/setting.js" />
         <option value="$PROJECT_DIR$/iPlayer/src/options_custom/settings.js" />
-        <option value="$PROJECT_DIR$/iPlayer/src/bg/background.js" />
         <option value="$PROJECT_DIR$/iPlayer/src/options_custom/manifest.js" />
         <option value="$PROJECT_DIR$/iPlayer/js/lib/element.js" />
         <option value="$PROJECT_DIR$/iPlayer/css/style.css" />
         <option value="$PROJECT_DIR$/iPlayer/js/app/show.js" />
         <option value="$PROJECT_DIR$/iPlayer/sinon.js" />
         <option value="$PROJECT_DIR$/iPlayer/jsTestDriver.conf" />
+        <option value="$PROJECT_DIR$/iPlayer/src/inject/bbc.js" />
         <option value="$PROJECT_DIR$/iPlayer/src-test/bg/backgroundtest.js" />
+        <option value="$PROJECT_DIR$/iPlayer/src/bg/background.js" />
       </list>
     </option>
   </component>
@@ -422,7 +334,47 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="inject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chrome-extensions" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chrome-extensions" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iPlayer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="bg" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chrome-extensions" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chrome-extensions" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iPlayer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -445,11 +397,11 @@
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="MemberChooser.showClasses" value="true" />
     <property name="FullScreen" value="false" />
+    <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -487,19 +439,6 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -528,6 +467,19 @@
       <listeners />
       <method />
     </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" />
@@ -541,13 +493,6 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="" />
       <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavascriptDebugSession" factoryName="Local" singleton="true">
-      <JSDebuggerConfigurationSettings>
-        <option name="engineId" value="embedded" />
-        <option name="fileUrl" />
-      </JSDebuggerConfigurationSettings>
       <method />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
@@ -569,6 +514,13 @@
       </option>
       <envs />
       <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugSession" factoryName="Local" singleton="true">
+      <JSDebuggerConfigurationSettings>
+        <option name="engineId" value="embedded" />
+        <option name="fileUrl" />
+      </JSDebuggerConfigurationSettings>
       <method />
     </configuration>
     <list size="0" />
@@ -611,6 +563,7 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38856477" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -625,12 +578,12 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13586292" sideWeight="0.6105263" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13525091" sideWeight="0.61143523" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="JsTestDriver Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38947368" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -699,11 +652,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/iPlayer/src/inject/bbc.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="0" selection-start="240" selection-end="253" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/iPlayer/src/options_custom/i18n.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="17" selection-start="26" selection-end="38" vertical-scroll-proportion="0.0" />
@@ -730,9 +678,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/iPlayer/js/lib/element.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="45" selection-start="1411" selection-end="1411" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="62" column="45" selection-start="1411" selection-end="1411" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/iPlayer/img/settings.png">
@@ -740,23 +686,9 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/iPlayer/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="144" column="72" selection-start="2955" selection-end="2955" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/iPlayer/js/app/show.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="19" column="85" selection-start="429" selection-end="429" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iPlayer/src/inject/bbc.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="10" selection-start="1350" selection-end="1351" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -782,23 +714,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/iPlayer/jsTestDriver.conf">
+    <entry file="file://$PROJECT_DIR$/iPlayer/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="46" selection-start="105" selection-end="105" vertical-scroll-proportion="0.0">
+        <state line="144" column="72" selection-start="2955" selection-end="2955" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/iPlayer/src/bg/background.js">
+    <entry file="file://$PROJECT_DIR$/iPlayer/manifest.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="148" column="52" selection-start="4555" selection-end="4555" vertical-scroll-proportion="-21.538462">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iPlayer/jsTestDriver.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="76" selection-start="110" selection-end="110" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iPlayer/src/inject/bbc.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="54" column="107" selection-start="1173" selection-end="1173" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/iPlayer/src-test/bg/backgroundtest.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="43" selection-start="257" selection-end="257" vertical-scroll-proportion="0.17564403">
+        <state line="32" column="96" selection-start="1365" selection-end="1365" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iPlayer/src/bg/background.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="72" column="2" selection-start="2243" selection-end="2243" vertical-scroll-proportion="1.3035495">
           <folding />
         </state>
       </provider>

@@ -15,17 +15,16 @@ var lib = {
 	}
 };
 
-var background = {
-
+var request = {
 	_isValidUrl: function (url) {
 		return  (url.indexOf('http://www.bbc.co.uk/iplayer/episode') > -1);
 	},
 
 
-	requestFeed: function (tabId, changeInfo, tab) {
-		if (background._isValidUrl(tab.url)) {
-			var url = background._getIONFeedUrl(tab);
-			background._loadProgrammeFeed(url);
+	feed: function (tabId, changeInfo, tab) {
+		if (request._isValidUrl(tab.url)) {
+			var url = request._getIONFeedUrl(tab);
+			request._loadProgrammeFeed(url);
 		}
 	},
 
@@ -36,16 +35,18 @@ var background = {
 
 	_loadProgrammeFeed: function (url) {
 		var requestedXML = new XMLHttpRequest();
-		requestedXML.addEventListener("loadend", background._setBrandDetails, false);
+		requestedXML.addEventListener("loadend", brandDetail.set, false);
 		requestedXML.open("GET", url, false);
 		requestedXML.setRequestHeader("Accept", "application/xml");
 		requestedXML.send();
-	},
+	}
+};
 
-	_setBrandDetails: function (xml) {
-		brandId = background._getElementText(xml, 'brand_id', 'series_id');
-		brandTitle = background._getElementText(xml, 'brand_title', 'series_title');
-		episodesDetails = background._getEpisodes(brandId);
+var brandDetail = {
+	set: function (xml) {
+		brandId = brandDetail._getElementText(xml, 'brand_id', 'series_id');
+		brandTitle = brandDetail._getElementText(xml, 'brand_title', 'series_title');
+		episodesDetails = brandDetail._getEpisodes(brandId);
 	},
 
 	_getEpisodes: function (brandId) {
@@ -128,7 +129,7 @@ update = {
 		for (var brandId in localStorage) {
 			if (brandId.search(/store.settings/) < 0) {
 				var brandDetail = JSON.parse(localStorage.getItem(brandId));
-				var episodes = background._getEpisodes(brandId);
+				var episodes = request._getEpisodes(brandId);
 				if (update._isUpdated(brandDetail, episodes)) {
 					localStorage.removeItem(brandId);
 					localStorage.setItem(brandId, JSON.stringify({title: brandDetail.title, episodes: episodes}));
@@ -151,9 +152,12 @@ update = {
 	}
 };
 
-chrome.tabs.onUpdated.addListener(background.requestFeed);
+try{
+chrome.tabs.onUpdated.addListener(request.feed);
 
 chrome.runtime.onMessage.addListener(subscribe.handleSubscribe);
+}
+catch (err){}
 
 var checkUpdateInterval = localStorage.getItem('store.settings.iplayer_check_update') || 1;
 setInterval(update.episodes, checkUpdateInterval*3600*1000);
