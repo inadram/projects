@@ -23,39 +23,45 @@ var request = {
 
 	feed: function (tabId, changeInfo, tab) {
 		if (request._isValidUrl(tab.url)) {
-			var url = request._getIONFeedUrl(tab);
-			request._loadProgrammeFeed(url);
+			var IONProgrammeFeed = request._getProgrammeIONFeed(tab);
+			var IONProgrammeXMLFeed = request._getRequestedFeedResponse(IONProgrammeFeed);
+			brandDetail.set(IONProgrammeXMLFeed);
 		}
 	},
 
-	_getIONFeedUrl: function (tab) {
+	_getProgrammeIONFeed: function (tab) {
 		var episodeId = tab.url.replace(/.*episode\/([^\/]*)\/.*/, "$1");
 		return "http://www.bbc.co.uk/iplayer/ion/episodedetail/episode/" + episodeId;
 	},
 
-	_loadProgrammeFeed: function (url) {
+	_getiPlayerEpisodesFeed: function (brandId) {
+		return  'http://www.bbc.co.uk/iplayer/ion/container/brand/' + brandId + '/with_episodes/1/recipe/wii-listview/';
+	},
+
+	_getRequestedFeedResponse: function (url) {
 		var requestedXML = new XMLHttpRequest();
-		requestedXML.addEventListener("loadend", brandDetail.set, false);
 		requestedXML.open("GET", url, false);
 		requestedXML.setRequestHeader("Accept", "application/xml");
 		requestedXML.send();
+		return requestedXML.responseXML;
 	}
 };
 
 var brandDetail = {
-	set: function (xml) {
-		brandId = brandDetail._getElementText(xml, 'brand_id', 'series_id');
-		brandTitle = brandDetail._getElementText(xml, 'brand_title', 'series_title');
-		episodesDetails = brandDetail._getEpisodes(brandId);
+	set: function (XMLFeed) {
+		brandId = brandDetail._getElementText(XMLFeed, 'brand_id', 'series_id');
+		brandTitle = brandDetail._getElementText(XMLFeed, 'brand_title', 'series_title');
+		episodesDetails = brandDetail._getEpisodesDetails(brandId);
 	},
 
-	_getEpisodes: function (brandId) {
-		var iPlayerFeed = 'http://www.bbc.co.uk/iplayer/ion/container/brand/' + brandId + '/with_episodes/1/recipe/wii-listview/';
-		var req = new XMLHttpRequest();
-		req.open("GET", iPlayerFeed, false);
-		req.setRequestHeader('Accept', 'application/xml');
-		req.send();
-		var episodes = req.responseXML.querySelectorAll('episode');
+	_getEpisodesDetails: function (brandId) {
+		var iPlayerEpisodesFeed = request._getiPlayerEpisodesFeed(brandId);
+		var iPlayerEpisodesXMLFeed = request._getRequestedFeedResponse(iPlayerEpisodesFeed);
+		var episodes = [];
+		try{
+			episodes = iPlayerEpisodesXMLFeed.querySelectorAll('episode');
+		} catch (err){
+		}
 		var episodesDetails = [];
 		for (var i = 0; i < episodes.length; i++) {
 			var id = episodes[i].querySelector('id').textContent;
@@ -67,8 +73,13 @@ var brandDetail = {
 	},
 
 	_getElementText: function (XML, id, backupId) {
-		var responseXML = XML.target.responseXML;
-		return  responseXML.querySelector(id).textContent || responseXML.querySelector(backupId).textContent;
+		var elementText;
+		try {
+			elementText = XML.querySelector(id).textContent || XML.querySelector(backupId).textContent;
+		}
+		catch (err) {
+		}
+		return elementText;
 	}
 };
 
@@ -76,7 +87,7 @@ subscribe = {
 
 	handleSubscribe: function (request, sender, sendResponse) {
 		var status = 'invalidRequest';
-		if(subscribe._isValidRequest()){
+		if (subscribe._isValidRequest()) {
 			status = 'validRequest';
 			status = subscribe._handleSubscribeRequest(request, status);
 			status = subscribe._handleAlreadySubscribedRequest(request, status);
@@ -129,7 +140,7 @@ update = {
 		for (var brandId in localStorage) {
 			if (brandId.search(/store.settings/) < 0) {
 				var brandDetail = JSON.parse(localStorage.getItem(brandId));
-				var episodes = request._getEpisodes(brandId);
+				var episodes = request._getEpisodesDetails(brandId);
 				if (update._isUpdated(brandDetail, episodes)) {
 					localStorage.removeItem(brandId);
 					localStorage.setItem(brandId, JSON.stringify({title: brandDetail.title, episodes: episodes}));
@@ -152,13 +163,14 @@ update = {
 	}
 };
 
-try{
-chrome.tabs.onUpdated.addListener(request.feed);
+try {
+	chrome.tabs.onUpdated.addListener(request.feed);
 
-chrome.runtime.onMessage.addListener(subscribe.handleSubscribe);
+	chrome.runtime.onMessage.addListener(subscribe.handleSubscribe);
 }
-catch (err){}
+catch (err) {
+}
 
 var checkUpdateInterval = localStorage.getItem('store.settings.iplayer_check_update') || 1;
-setInterval(update.episodes, checkUpdateInterval*3600*1000);
+setInterval(update.episodes, checkUpdateInterval * 3600 * 1000);
 //setInterval(update.episodes, checkUpdateInterval*1000);
