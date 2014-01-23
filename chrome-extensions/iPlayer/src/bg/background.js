@@ -57,16 +57,13 @@ var brandDetail = {
 	_getEpisodesDetails: function (brandId) {
 		var iPlayerEpisodesFeed = request._getiPlayerEpisodesFeed(brandId);
 		var iPlayerEpisodesXMLFeed = request._getRequestedFeedResponse(iPlayerEpisodesFeed);
-		var episodes = [];
-		try{
-			episodes = iPlayerEpisodesXMLFeed.querySelectorAll('episode');
-		} catch (err){
-		}
+		var episodes = brandDetail._getAllElements(iPlayerEpisodesXMLFeed,'episode');
+
 		var episodesDetails = [];
 		for (var i = 0; i < episodes.length; i++) {
-			var id = episodes[i].querySelector('id').textContent;
+			var id = brandDetail._getElementText(episodes[i],'id');
 			var url = "http://www.bbc.co.uk/iplayer/episode/" + id;
-			var title = episodes[i].querySelector('contextually_unique_title').textContent;
+			var title = brandDetail._getElementText(episodes[i],'contextually_unique_title');
 			episodesDetails.push({id: id, title: title, url: url});
 		}
 		return episodesDetails;
@@ -80,6 +77,15 @@ var brandDetail = {
 		catch (err) {
 		}
 		return elementText;
+	},
+
+	_getAllElements: function(XML, id){
+		var episodes = [];
+		try{
+			episodes = XML.querySelectorAll(id);
+		} catch (err){
+		}
+		return episodes;
 	}
 };
 
@@ -127,7 +133,7 @@ notification = {
 	},
 	click: function (episodes) {
 		window.open(episodes[0].url);
-		this.close();
+		window.close();
 	},
 	create: function (brandTitle, episodes) {
 		return window.webkitNotifications.createNotification('http://www.bbc.co.uk/iplayer/images/episode/' + episodes[0].id + '_196_110.jpg', brandTitle, episodes[0].title);
@@ -163,13 +169,10 @@ update = {
 	}
 };
 
-try {
-	chrome.tabs.onUpdated.addListener(request.feed);
 
+	chrome.tabs.onUpdated.addListener(request.feed);
 	chrome.runtime.onMessage.addListener(subscribe.handleSubscribe);
-}
-catch (err) {
-}
+
 
 var checkUpdateInterval = localStorage.getItem('store.settings.iplayer_check_update') || 1;
 setInterval(update.episodes, checkUpdateInterval * 3600 * 1000);
