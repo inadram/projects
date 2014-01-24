@@ -169,9 +169,11 @@ update = {
 	}
 };
 
-
+try{
 	chrome.tabs.onUpdated.addListener(request.feed);
 	chrome.runtime.onMessage.addListener(subscribe.handleSubscribe);
+}
+catch (err){}
 
 
 var checkUpdateInterval = localStorage.getItem('store.settings.iplayer_check_update') || 1;
