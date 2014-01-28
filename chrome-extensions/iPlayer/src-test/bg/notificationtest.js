@@ -11,7 +11,7 @@ NotificationTest.prototype.tearDown = function () {
 NotificationTest.prototype.testOnClickShouldOpenExpectedURLAndCloseCurrentWindow = function () {
 	expectAsserts(1);
 	var openWindowSpy = this._sandbox.spy(window,'open');
-	var closeStub = this._sandbox.stub(window,'close');
+	notification.close = function(){};
 	var episodes = [{url:'URL1'},{url:'URL2'}];
 	notification.click(episodes);
 	assertTrue(openWindowSpy.withArgs(episodes[0].url).calledOnce);

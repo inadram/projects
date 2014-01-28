@@ -57,13 +57,13 @@ var brandDetail = {
 	_getEpisodesDetails: function (brandId) {
 		var iPlayerEpisodesFeed = request._getiPlayerEpisodesFeed(brandId);
 		var iPlayerEpisodesXMLFeed = request._getRequestedFeedResponse(iPlayerEpisodesFeed);
-		var episodes = brandDetail._getAllElements(iPlayerEpisodesXMLFeed,'episode');
+		var episodes = brandDetail._getAllElements(iPlayerEpisodesXMLFeed, 'episode');
 
 		var episodesDetails = [];
 		for (var i = 0; i < episodes.length; i++) {
-			var id = brandDetail._getElementText(episodes[i],'id');
+			var id = brandDetail._getElementText(episodes[i], 'id');
 			var url = "http://www.bbc.co.uk/iplayer/episode/" + id;
-			var title = brandDetail._getElementText(episodes[i],'contextually_unique_title');
+			var title = brandDetail._getElementText(episodes[i], 'contextually_unique_title');
 			episodesDetails.push({id: id, title: title, url: url});
 		}
 		return episodesDetails;
@@ -79,11 +79,11 @@ var brandDetail = {
 		return elementText;
 	},
 
-	_getAllElements: function(XML, id){
+	_getAllElements: function (XML, id) {
 		var episodes = [];
-		try{
+		try {
 			episodes = XML.querySelectorAll(id);
-		} catch (err){
+		} catch (err) {
 		}
 		return episodes;
 	}
@@ -133,7 +133,7 @@ notification = {
 	},
 	click: function (episodes) {
 		window.open(episodes[0].url);
-		window.close();
+		notification.close();
 	},
 	create: function (brandTitle, episodes) {
 		return window.webkitNotifications.createNotification('http://www.bbc.co.uk/iplayer/images/episode/' + episodes[0].id + '_196_110.jpg', brandTitle, episodes[0].title);
@@ -145,37 +145,43 @@ update = {
 	episodes: function () {
 		for (var brandId in localStorage) {
 			if (brandId.search(/store.settings/) < 0) {
-				var brandDetail = JSON.parse(localStorage.getItem(brandId));
-				var episodes = request._getEpisodesDetails(brandId);
-				if (update._isUpdated(brandDetail, episodes)) {
-					localStorage.removeItem(brandId);
-					localStorage.setItem(brandId, JSON.stringify({title: brandDetail.title, episodes: episodes}));
-					notification.show(brandDetail.title, episodes);
-
-					chrome.browserAction.getBadgeText({}, function (number) {
-						var numberOfUpdatedProgrammes = parseInt(number) || 0;
-						chrome.browserAction.setBadgeText({text: String(numberOfUpdatedProgrammes + 1) });
-					});
-
+				var brandDetails = JSON.parse(localStorage.getItem(brandId));
+				var episodes = brandDetail._getEpisodesDetails(brandId);
+				if (update._isUpdated(brandDetails, episodes)) {
+					update._setUpdatedEpisodes(brandId, brandDetails, episodes);
+					notification.show(brandDetails.title, episodes);
+					update._setBadge();
 				}
 			}
-
 		}
 	},
 
+	_setUpdatedEpisodes: function (brandId, brandDetail, episodes) {
+		localStorage.removeItem(brandId);
+		localStorage.setItem(brandId, JSON.stringify({title: brandDetail.title, episodes: episodes}));
+	},
+
+	_setBadge: function () {
+		chrome.browserAction.getBadgeText({}, function (number) {
+			var numberOfUpdatedProgrammes = parseInt(number) || 0;
+			chrome.browserAction.setBadgeText({text: String(numberOfUpdatedProgrammes + 1) });
+		});
+	},
+
 	_isUpdated: function (brandDetail, episodes) {
-		return JSON.stringify(brandDetail.episodes) !== JSON.stringify(episodes);
-//		return JSON.stringify(brandDetail.episodes) === JSON.stringify(episodes);
+//		return JSON.stringify(brandDetail.episodes) !== JSON.stringify(episodes);
+		return JSON.stringify(brandDetail.episodes) === JSON.stringify(episodes);
 	}
 };
 
-try{
+try {
 	chrome.tabs.onUpdated.addListener(request.feed);
 	chrome.runtime.onMessage.addListener(subscribe.handleSubscribe);
-}
-catch (err){}
-
-
-var checkUpdateInterval = localStorage.getItem('store.settings.iplayer_check_update') || 1;
-setInterval(update.episodes, checkUpdateInterval * 3600 * 1000);
+	var checkUpdateInterval = localStorage.getItem('store.settings.iplayer_check_update') || 1;
+	setInterval(update.episodes, checkUpdateInterval * 3600 * 1000);
 //setInterval(update.episodes, checkUpdateInterval*1000);
+}
+catch (err) {
+}
+
+

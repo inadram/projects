@@ -41,6 +41,7 @@ h2 {
 
 #tabs {
     height: 30px;
+    width: 650px;
 }
 
 #tabs > ul {
