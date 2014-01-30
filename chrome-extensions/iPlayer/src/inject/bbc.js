@@ -1,17 +1,24 @@
 var element = {
 
 	createSubscribe: function () {
-		try{
-		var tools = this._loadToolsDiv();
-		var li = this._createSubscribeLi('subscribe', 'subscribeLi');
-		this._createSubscribeSpan(li, 'subscribeText');
-		tools.appendChild(li);
+		try {
+			var tools = this._loadToolsDiv();
+			var li = this._createSubscribeLi('subscribe', 'subscribeLi');
+			this._createSubscribeSpan(li, 'subscribeText');
+			tools.appendChild(li);
 		}
-		catch (err){}
+		catch (err) {
+		}
 	},
 
 	_loadToolsDiv: function () {
-		return document.getElementsByClassName("tools")[0];
+		var toolsDiv;
+		try {
+			toolsDiv= document.getElementsByClassName("tools")[0];
+		}
+		catch (err) {
+		}
+		return toolsDiv;
 	},
 
 	_createSubscribeLi: function (className, id) {
@@ -22,7 +29,8 @@ var element = {
 			li.setAttribute('class', 'display-none');
 			li.setAttribute('id', id);
 		}
-		catch(err) {}
+		catch (err) {
+		}
 
 		return li;
 	},
@@ -30,18 +38,20 @@ var element = {
 	_createSubscribeSpan: function (element, id) {
 		var span;
 		try {
-		span = element.getElementsByTagName('span')[0];
-		span.setAttribute('id', id);
+			span = element.getElementsByTagName('span')[0];
+			span.setAttribute('id', id);
 		}
-		catch(err) {}
+		catch (err) {
+		}
 		return span;
 	},
 
 	updateSubscribeText: function (text) {
-		try{
-		this._getSubscribeSpanTextElement().textContent = text;
+		try {
+			this._getSubscribeSpanTextElement().textContent = text;
 		}
-		catch (err){}
+		catch (err) {
+		}
 	},
 
 	_getSubscribeSpanTextElement: function () {
@@ -58,10 +68,11 @@ var bbc = {
 	},
 
 	_attacheListener: function () {
-		try{
-		document.getElementById("subscribeLi").addEventListener("click", this._onSubscribeClick, false);
+		try {
+			document.getElementById("subscribeLi").addEventListener("click", this._onSubscribeClick, false);
 		}
-		catch (err){}
+		catch (err) {
+		}
 	},
 
 	_onSubscribeClick: function () {
