@@ -37,17 +37,6 @@ BbcTest.prototype.testSubscribeMethodShouldAttacheClickEventToSubscribeLiElement
 	assertTrue(addEventListenerSpy.withArgs('click').calledOnce);
 };
 
-BbcTest.prototype.testOnClickEventOfSubscribeLiElementSubscribeMessagePost = function () {
-	expectAsserts(1);
-
-	var getElementByIdStub= this._sandbox.stub(document,'getElementById');
-	var subscribeLi = {};
-	subscribeLi.addEventListener = function(){};
-	getElementByIdStub.withArgs('subscribeLi').returns(subscribeLi);
-	bbc.subscribe();
-
-};
-
 BbcTest.prototype.testSubscribeMethodShouldPostIsSubscribedMessage = function () {
 	expectAsserts(1);
 

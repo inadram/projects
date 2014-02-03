@@ -1,19 +1,35 @@
 var load = {
 
 	js: function (src) {
-		var script = document.createElement('script');
-		script.src = chrome.extension.getURL(src);
-		script.onload = function () {
-			this.parentNode.removeChild(this);
-		};
-		(document.head || document.documentElement).appendChild(script);
+		try {
+			var script = document.createElement('script');
+			script.src = load.getUrl(src);
+			script.onload = function () {
+				this.parentNode.removeChild(this);
+			};
+			(document.head || document.documentElement).appendChild(script);
+		}
+		catch (err) {
+		}
 	},
 
 	css: function (href) {
-		var css = document.createElement('link');
-		css.rel = "stylesheet";
-		css.href = chrome.extension.getURL(href);
-		(document.head || document.documentElement).appendChild(css);
+		try {
+			var css = document.createElement('link');
+			css.rel = "stylesheet";
+			css.href = load.getUrl(href);
+			(document.head || document.documentElement).appendChild(css);
+		} catch (err) {
+		}
+	},
+
+	getUrl: function(path){
+		var url ='';
+		try{
+			url = chrome.extension.getURL(path);
+		}
+		catch (err){}
+		return url
 	}
 };
 

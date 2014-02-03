@@ -8,9 +8,6 @@ define('app/show',
 
 		return Class.extend({
 
-
-
-
 			init: function () {
 				this._element = new Element();
 				this._tabContainer = document.getElementById('tabContainer');
