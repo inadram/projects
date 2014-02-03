@@ -43,25 +43,13 @@ ElementTest.prototype.testCreateSubscribeDivShouldCreateLiWithExpectedIdAndClass
 	assertTrue(this._setAttributeSpy.withArgs('id','subscribeLi').called);
 };
 
-ElementTest.prototype.testCreateSubscribeDivShouldCreateSubscribeSpanWithExpectedId = function () {
+ElementTest.prototype.testUpdateSubscribeTextSetTheTextContentToExpectedValue = function () {
 	expectAsserts(1);
-
 	var documentStub = this._sandbox.stub(window.document);
-	var fakeDiv = {};
-	var fakeLi ={};
-	fakeLi.getElementsByTagName= function(){};
-	var fakeLiStub = this._sandbox.stub(fakeLi);
-	fakeDiv.cloneNode = function(){
-		return fakeLiStub;
-	};
-	documentStub.getElementsByClassName.withArgs('link-to-this').returns([fakeDiv]);
+	var fakeElement = {textContent:''};
+	documentStub.getElementById.withArgs('subscribeText').returns(fakeElement);
+	var updateText = 'Some Update';
+	element.updateSubscribeText(updateText);
+	assertEquals(fakeElement.textContent,updateText);
 
-
-
-	var fakeSpan = {};
-	fakeSpan.setAttribute = function(){};
-	var fakeSpanSetAttributeSpy = this._sandbox.spy(fakeSpan,'setAttribute');
-	fakeLiStub.getElementsByTagName.withArgs('span').returns([fakeSpan]);
-	element.createSubscribe();
-	assertTrue(fakeSpanSetAttributeSpy.withArgs('id','subscribeText').called);
 };
