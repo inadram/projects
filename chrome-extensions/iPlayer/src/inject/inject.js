@@ -23,53 +23,41 @@ var load = {
 		}
 	},
 
-	getUrl: function(path){
-		var url ='';
-		try{
+	getUrl: function (path) {
+		var url = '';
+		try {
 			url = chrome.extension.getURL(path);
 		}
-		catch (err){}
+		catch (err) {
+		}
 		return url
 	}
 };
 
 var subscription = {
 
-	handleSubscribe: function (event) {
+	handleSubscribeRequest: function (event) {
 		if (subscription._isValid(event)) {
-			subscription._subscribe(event);
-			subscription._isSubscribed(event);
+			subscription._checkSubscribeRequest(event);
 		}
 	},
 
 	_isValid: function (event) {
-		return (event.data.type && (event.data.type == "iplayer") && event.source == window);
+		return (event.data.type && (event.data.type == "iplayer") && event.source == window && (event.data.text == 'subscribe' || event.data.text == 'isSubscribed'));
 	},
 
-	_subscribe: function (event) {
-		if (event.data.text == 'subscribe') {
-			chrome.runtime.sendMessage({message: "subscribe"}, this._response);
-		}
+	_checkSubscribeRequest: function (event) {
+		subscription.sendMessage(event.data.text);
 	},
 
-	_isSubscribed: function (event) {
-		if (event.data.text == 'isSubscribed') {
-			chrome.runtime.sendMessage({message: "isSubscribed"}, this._response);
-		}
+	sendMessage: function (message) {
+		chrome.runtime.sendMessage({message: message}, this._handleResponse);
 	},
 
-	_response: function (evt) {
-		subscription._handleInvalidRequest(evt);
-		subscription._handleAlreadySubscribedRequest(evt);
-	},
-
-	_handleInvalidRequest: function (evt) {
+	_handleResponse: function (evt) {
 		if (evt.status !== 'invalidRequest') {
 			document.getElementById('subscribeLi').classList.remove('display-none');
 		}
-	},
-
-	_handleAlreadySubscribedRequest: function (evt) {
 		if (evt.status == 'subscribed') {
 			document.getElementById('subscribeLi').setAttribute('class', 'subscribed');
 			document.getElementById('subscribeText').textContent = 'subscribed';
@@ -93,7 +81,7 @@ var inject = {
 	},
 
 	_attacheListeners: function () {
-		window.addEventListener("message", subscription.handleSubscribe, false);
+		window.addEventListener("message", subscription.handleSubscribeRequest, false);
 	},
 
 	isReady: function () {
