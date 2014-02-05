@@ -20,7 +20,7 @@ this.manifest = {
 		}
 	]
 };
-subscription = {
+subscriptionManager = {
 	_getBrands: function () {
 		var brands = [];
 		for (var brandId in localStorage) {
@@ -47,5 +47,5 @@ subscription = {
 	}
 };
 
-subscription._showBrands();
+subscriptionManager._showBrands();
 

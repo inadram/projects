@@ -13,7 +13,7 @@ SubscribeTest.prototype.testHandleSubscribeRequestReturnExpectedCallBacksOnInval
 	brandId ='';
 	brandTitle = '';
 	var someCallBack = sinon.spy();
-	subscribe.handleSubscribeRequest('','',someCallBack);
+	subscribe.handleSubscribe('','',someCallBack);
 	assertTrue(someCallBack.withArgs({status:'invalidRequest'}).calledOnce);
 };
 
@@ -22,7 +22,7 @@ SubscribeTest.prototype.testHandleSubscribeRequestReturnsValidResponseOnValidReq
 	brandId = 'some BrandId';
 	brandTitle = 'some Title';
 	var callBackSpy = sinon.spy();
-	subscribe.handleSubscribeRequest('','',callBackSpy);
+	subscribe.handleSubscribe('','',callBackSpy);
 	assertTrue(callBackSpy.withArgs({status:'validRequest'}).calledOnce);
 };
 
@@ -32,7 +32,7 @@ SubscribeTest.prototype.testHandleSubscribeRequestReturnsSubscribedResponseOnSub
 	brandTitle = 'some Title';
 	var request = {message: 'subscribe'};
 	var callBackSpy = sinon.spy();
-	subscribe.handleSubscribeRequest(request,'',callBackSpy);
+	subscribe.handleSubscribe(request,'',callBackSpy);
 	assertTrue(callBackSpy.withArgs({status:'subscribed'}).calledOnce);
 };
 
@@ -45,7 +45,7 @@ SubscribeTest.prototype.testHandleSubscribeRequestReturnsSubscribedResponseOnAlr
 
 	var isSubscribeStub = this._sandbox.stub(lib,'isSubscribed');
 	isSubscribeStub.returns(true);
-	subscribe.handleSubscribeRequest(request,'',callBackSpy);
+	subscribe.handleSubscribe(request,'',callBackSpy);
 	assertTrue(callBackSpy.withArgs({status:'subscribed'}).calledOnce);
 };
 

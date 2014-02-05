@@ -34,11 +34,11 @@ var load = {
 	}
 };
 
-var subscription = {
+var subscribeButton = {
 
-	handleSubscribeRequest: function (event) {
-		if (subscription._isValid(event)) {
-			subscription._checkSubscribeRequest(event);
+	sendSubscriptionRequest: function (event) {
+		if (subscribeButton._isValid(event)) {
+			subscribeButton._sendRequest(event);
 		}
 	},
 
@@ -46,8 +46,8 @@ var subscription = {
 		return (event.data.type && (event.data.type == "iplayer") && event.source == window && (event.data.text == 'subscribe' || event.data.text == 'isSubscribed'));
 	},
 
-	_checkSubscribeRequest: function (event) {
-		subscription.sendMessage(event.data.text);
+	_sendRequest: function (event) {
+		subscribeButton.sendMessage(event.data.text);
 	},
 
 	sendMessage: function (message) {
@@ -61,6 +61,7 @@ var subscription = {
 		if (evt.status == 'subscribed') {
 			document.getElementById('subscribeLi').setAttribute('class', 'subscribed');
 			document.getElementById('subscribeText').textContent = 'subscribed';
+			document.getElementById('subscribeText').disabled = true;
 		}
 	}
 };
@@ -81,7 +82,7 @@ var inject = {
 	},
 
 	_attacheListeners: function () {
-		window.addEventListener("message", subscription.handleSubscribeRequest, false);
+		window.addEventListener("message", subscribeButton.sendSubscriptionRequest, false);
 	},
 
 	isReady: function () {

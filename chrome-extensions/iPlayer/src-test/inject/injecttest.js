@@ -39,5 +39,5 @@ InjectTest.prototype.testDomShouldAttacheTheMessageEventToWindowIfDomIsInReadySt
 	this._sandbox.stub(inject,'isReady').returns(true);
 
 	inject.dom();
-	assertTrue(addEventListenerSpy.withArgs("message", subscription.handleSubscribeRequest, false).called);
+	assertTrue(addEventListenerSpy.withArgs("message", subscribeButton.sendSubscriptionRequest, false).called);
 };

@@ -101,16 +101,16 @@ subscribe = {
 		sendResponse({status: status});
 	},
 
-	_handleAlreadySubscribedRequest: function (request, status) {
-		if (request.message === 'isSubscribed' && this._isAlreadySubscribed()) {
+	_handleSubscribeRequest: function (request, status) {
+		if (request.message === 'subscribe') {
+			localStorage.setItem(brandId, JSON.stringify({title: brandTitle, episodes: episodesDetails}));
 			status = 'subscribed';
 		}
 		return status;
 	},
 
-	_handleSubscribeRequest: function (request, status) {
-		if (request.message === 'subscribe') {
-			localStorage.setItem(brandId, JSON.stringify({title: brandTitle, episodes: episodesDetails}));
+	_handleAlreadySubscribedRequest: function (request, status) {
+		if (request.message === 'isSubscribed' && this._isAlreadySubscribed()) {
 			status = 'subscribed';
 		}
 		return status;
