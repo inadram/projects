@@ -169,8 +169,8 @@ update = {
 	},
 
 	_isUpdated: function (brandDetail, episodes) {
-//		return JSON.stringify(brandDetail.episodes) !== JSON.stringify(episodes);
-		return JSON.stringify(brandDetail.episodes) === JSON.stringify(episodes);
+		return JSON.stringify(brandDetail.episodes) !== JSON.stringify(episodes);
+//		return JSON.stringify(brandDetail.episodes) === JSON.stringify(episodes);
 	}
 };
 

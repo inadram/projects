@@ -55,6 +55,7 @@ var subscribeButton = {
 	},
 
 	_handleResponse: function (evt) {
+		try{
 		if (evt.status !== 'invalidRequest') {
 			document.getElementById('subscribeLi').classList.remove('display-none');
 		}
@@ -63,6 +64,8 @@ var subscribeButton = {
 			document.getElementById('subscribeText').textContent = 'subscribed';
 			document.getElementById('subscribeText').disabled = true;
 		}
+		}
+		catch(err){}
 	}
 };
 
