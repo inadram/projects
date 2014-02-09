@@ -6,6 +6,9 @@ SubscribeTest.prototype.setUp = function () {
 
 SubscribeTest.prototype.tearDown = function () {
 	this._sandbox.restore();
+	brandId = null;
+	brandTitle = null;
+	localStorage = null;
 };
 
 SubscribeTest.prototype.testHandleSubscribeRequestReturnExpectedCallBacksOnInvalidRequest = function () {

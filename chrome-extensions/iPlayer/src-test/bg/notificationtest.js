@@ -39,7 +39,7 @@ NotificationTest.prototype.testShowShouldCreateNotificationWithExpectedArguments
 	assertTrue(createNotificationStub.withArgs(brandTitle,episodes).calledOnce);
 };
 
-NotificationTest.prototype.testShowShouldBindOnClickEventWithExpectedArguments = function () {
+NotificationTest.prototype.testShowNotificationShouldBindOnClickEventWithExpectedArguments = function () {
 	expectAsserts(1);
 	var createNotificationStub = this._sandbox.stub(notification,'create');
 	var status ={};
