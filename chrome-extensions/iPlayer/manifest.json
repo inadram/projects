@@ -21,29 +21,14 @@
 		"default_popup": "src/browser_action/browser_action.html"
 	},
 	"permissions": [
-		"bookmarks",
 		"chrome://favicon/",
-		"clipboardRead",
-		"clipboardWrite",
-		"contentSettings",
-		"contextMenus",
-		"cookies",
-		"fileBrowserHandler",
-		"tts",
-		"ttsEngine",
-		"history",
 		"storage",
-		"idle",
 		"management",
 		"notifications",
 		"tabs",
-		"geolocation",
 		"http://bbc.co.uk/*",
 		"http://*.bbc.co.uk/*"
 	],
-	"omnibox": {
-		"keyword": "iPlayer"
-	},
 	"content_scripts": [
 		{
 			"matches": ["http://www.bbc.co.uk/iplayer/episode/*"],
