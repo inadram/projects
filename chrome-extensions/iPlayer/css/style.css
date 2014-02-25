@@ -12,6 +12,7 @@ h2 {
 }
 
 #wrapper {
+    overflow: hidden;
     width: 720px;
 }
 
