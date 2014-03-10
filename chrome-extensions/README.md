@@ -14,3 +14,5 @@ You can manage your subscription and notification through setting section of thi
 You wont miss any episode anymore, Making unmissable, unmissable. 
 
 This is an inadram.com project
+
+feel free to install the minified version from chrome store https://chrome.google.com/webstore/detail/bbc-iplayer-subscription/omconeoffommgjnkafldpjnmdbmopelh?hl=en
